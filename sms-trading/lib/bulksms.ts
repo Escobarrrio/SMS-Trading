@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const BULKSMS_API_URL = 'https://api.bulksms.com/v1/messages';
-const BULKSMS_USERNAME = process.env.BULKSMS_USERNAME!;
-const BULKSMS_PASSWORD = process.env.BULKSMS_PASSWORD!;
+const BULKSMS_AUTH_HEADER = process.env.BULKSMS_AUTH_HEADER!;
 
 interface SendSMSParams {
   to: string;
@@ -18,10 +17,6 @@ interface SMSResponse {
 }
 
 export async function sendSMS(params: SendSMSParams): Promise<SMSResponse> {
-  const auth = Buffer.from(`${BULKSMS_USERNAME}:${BULKSMS_PASSWORD}`).toString(
-    'base64'
-  );
-
   try {
     const response = await axios.post(
       BULKSMS_API_URL,
@@ -32,7 +27,7 @@ export async function sendSMS(params: SendSMSParams): Promise<SMSResponse> {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Basic ${auth}`,
+          Authorization: BULKSMS_AUTH_HEADER,
         },
       }
     );
@@ -45,14 +40,10 @@ export async function sendSMS(params: SendSMSParams): Promise<SMSResponse> {
 }
 
 export async function checkBalance(): Promise<{ balance: number }> {
-  const auth = Buffer.from(`${BULKSMS_USERNAME}:${BULKSMS_PASSWORD}`).toString(
-    'base64'
-  );
-
   try {
-    const response = await axios.get(`${BULKSMS_API_URL}/balance`, {
+    const response = await axios.get(`${BULKSMS_API_URL.replace('/messages', '')}/wallet`, {
       headers: {
-        Authorization: `Basic ${auth}`,
+        Authorization: BULKSMS_AUTH_HEADER,
       },
     });
 
