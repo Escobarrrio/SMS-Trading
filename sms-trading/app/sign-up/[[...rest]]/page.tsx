@@ -1,6 +1,6 @@
-import { SignIn } from '@clerk/nextjs';
+import { SignUp } from '@clerk/nextjs';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900">
       <div className="w-full max-w-md">
@@ -9,14 +9,14 @@ export default function SignInPage() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-2">
               SMS Trading
             </h1>
-            <p className="text-gray-600">Sign in to your account</p>
+            <p className="text-gray-600">Create your account</p>
           </div>
-          <SignIn />
+          <SignUp routing="hash" />
         </div>
         <p className="text-center text-gray-300 text-sm mt-6">
-          Don't have an account?{' '}
-          <a href="/sign-up" className="text-white hover:text-blue-200 font-semibold">
-            Sign up
+          Already have an account?{' '}
+          <a href="/sign-in" className="text-white hover:text-blue-200 font-semibold">
+            Sign in
           </a>
         </p>
       </div>

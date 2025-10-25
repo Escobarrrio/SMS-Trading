@@ -53,6 +53,93 @@ sms-trading/
 - **Validation**: Zod
 - **HTTP Client**: Axios
 
+## Premium Components Integrated
+
+### 1. **AOS (Animate On Scroll)**
+- **File**: `components/AnimatedSection.tsx`
+- **Usage**: Scroll-triggered animations on all sections
+- **Features**:
+  - Fade, slide, zoom animations
+  - Customizable duration and delay
+  - Mobile-optimized
+- **Example**: 
+  ```tsx
+  <AnimatedSection animation="fade-up" duration={800} delay={200}>
+    <div>Your content</div>
+  </AnimatedSection>
+  ```
+
+### 2. **Chart.js**
+- **File**: `components/UsageAnalytics.tsx`
+- **Usage**: Beautiful SMS usage statistics dashboard
+- **Features**:
+  - Doughnut chart for usage distribution
+  - Progress bar visualization
+  - Gradient stat cards
+  - Real-time data updates
+- **Example**:
+  ```tsx
+  <UsageAnalytics data={balanceData} />
+  ```
+
+### 3. **Typed.js**
+- **File**: `components/HeroTyped.tsx`
+- **Usage**: Animated typing effect on hero section
+- **Features**:
+  - Multiple string rotation
+  - Customizable typing speed
+  - Gradient text effect
+  - Smooth backspacing
+- **Example**:
+  ```tsx
+  <HeroTyped
+    strings={['Send SMS', 'Track Delivery', 'Grow Business']}
+    typeSpeed={50}
+  />
+  ```
+
+### 4. **Swiper.js**
+- **File**: `components/PricingCarousel.tsx`
+- **Usage**: Interactive pricing plans carousel
+- **Features**:
+  - Coverflow effect with 3D rotation
+  - Auto-play with pause on interaction
+  - Touch/mouse drag support
+  - Responsive slide sizing
+  - Pagination controls
+- **Note**: Uses dynamic imports for Next.js SSR compatibility
+- **Example**:
+  ```tsx
+  <PricingCarousel />
+  ```
+
+### 5. **CareerIcons Pro**
+- **Available for integration**: 150+ premium icons
+- **Categories**: Suitable for dashboard, status indicators, navigation
+- **Potential use**: Replace emoji icons with professional SVG icons
+
+### 6. **Particles.js** (Recommended future enhancement)
+- **Use case**: Animated background particles on landing page
+- **Integration**: Can be added to layout with client component wrapper
+
+## Premium Components Architecture
+
+```
+components/
+├── AnimatedSection.tsx      # AOS wrapper (scroll animations)
+├── HeroTyped.tsx           # Typed.js component (typing effect)
+├── UsageAnalytics.tsx      # Chart.js analytics dashboard
+├── PricingCarousel.tsx     # Swiper.js carousel
+└── SMSForm.tsx             # Original form component
+
+app/
+├── page.tsx                # Enhanced homepage with all premium components
+├── dashboard/page.tsx      # Dashboard with analytics
+└── api/
+    ├── send-sms/route.ts
+    └── check-balance/route.ts
+```
+
 ## Development Commands
 
 ```bash
@@ -117,6 +204,47 @@ CREATE INDEX idx_client_id ON sms_transactions(client_id);
 - E2E tests for complete SMS sending flow
 - Mock BulkSMS/Africa's Talking responses
 
+## Using Premium Components
+
+### AnimatedSection (AOS)
+**Available Animations:**
+- `fade`, `fade-up`, `fade-down`, `fade-left`, `fade-right`
+- `slide-up`, `slide-down`, `slide-left`, `slide-right`
+- `zoom-in`, `zoom-out`, `flip-left`, `flip-right`
+
+**Best Practices:**
+- Use staggered delays for cascading effects
+- Set `duration` between 400-1200ms for smooth feel
+- Use `once={false}` for re-animation on scroll back up
+
+### HeroTyped (Typed.js)
+**Customization:**
+- `typeSpeed`: milliseconds per character (default 40)
+- `backSpeed`: backspace speed (default 60)
+- `backDelay`: pause before backspacing (default 1500)
+- `loop`: enable infinite cycling (default true)
+
+### UsageAnalytics (Chart.js)
+**Real-time Updates:**
+- Component automatically re-renders on data changes
+- Charts use gradient colors from `tailwind.config.js`
+- Mobile-responsive with proper aspect ratios
+
+### PricingCarousel (Swiper.js)
+**Key Features:**
+- Next.js SSR-safe with dynamic imports
+- Touch gestures on mobile
+- Auto-advance every 5 seconds
+- Coverflow 3D effect
+
+**Customization in code:**
+```typescript
+const PLANS = [
+  { name, price, sms, features, highlight }
+  // Add/modify plans here
+]
+```
+
 ## Deployment Checklist
 
 - Create Supabase project and run schema migrations
@@ -125,3 +253,6 @@ CREATE INDEX idx_client_id ON sms_transactions(client_id);
 - Configure environment variables in Vercel
 - Test SMS sending in staging
 - Deploy via Vercel GitHub integration
+- Verify Chart.js renders correctly in production
+- Test Swiper.js carousel on mobile devices
+- Check AOS animations on different browsers
