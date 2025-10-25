@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { UserButton, auth } from '@clerk/nextjs';
+import { UserButton } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import HeroTyped from '@/components/HeroTyped';
 import AnimatedSection from '@/components/AnimatedSection';
 import PricingCarousel from '@/components/PricingCarousel';
