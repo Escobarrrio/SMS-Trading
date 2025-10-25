@@ -11,7 +11,7 @@ export default function SignUpPage() {
             </h1>
             <p className="text-gray-600">Create your account</p>
           </div>
-          <SignUp routing="hash" />
+<SignUp routing="hash" afterSignUpUrl="/dashboard" />
         </div>
         <p className="text-center text-gray-300 text-sm mt-6">
           Already have an account?{' '}

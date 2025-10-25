@@ -1,21 +1,18 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-const isPublicRoute = createRouteMatcher([
-  '/sign-in(.*)',
-  '/sign-up(.*)',
-  '/',
-]);
-
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
-
-export default clerkMiddleware((auth, req) => {
-  if (!isPublicRoute(req) && isProtectedRoute(req)) {
-    auth().protect();
-  }
+export default clerkMiddleware({
+  publicRoutes: [
+    '/',
+    '/sign-in(.*)',
+    '/sign-up(.*)',
+    '/favicon(.*)',
+    '/api/(.*)',
+  ],
 });
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/((?!.*\\..*|_next).*)',
+    '/',
   ],
 };

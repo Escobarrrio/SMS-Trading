@@ -11,7 +11,7 @@ export default function SignInPage() {
             </h1>
             <p className="text-gray-600">Sign in to your account</p>
           </div>
-          <SignIn routing="hash" />
+<SignIn routing="hash" afterSignInUrl="/dashboard" />
         </div>
         <p className="text-center text-gray-300 text-sm mt-6">
           Don't have an account?{' '}
