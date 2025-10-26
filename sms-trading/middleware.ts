@@ -1,6 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-const isProtected = createRouteMatcher(['/dashboard(.*)', '/send(.*)', '/contacts(.*)', '/campaigns(.*)']);
+const isProtected = createRouteMatcher(['/dashboard(.*)', '/send(.*)', '/contacts(.*)', '/campaigns(.*)', '/admin(.*)']);
 const preview = process.env.PREVIEW_MODE === 'true';
 
 export default clerkMiddleware((auth, req) => {

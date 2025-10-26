@@ -1,17 +1,6 @@
-'use client';
-
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { SignIn } from '@clerk/nextjs';
 
 export default function SignInPage() {
-  const router = useRouter();
-
-  // Preview: bypass auth loops and go straight to dashboard
-  useEffect(() => {
-    router.replace('/dashboard');
-  }, [router]);
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900">
       <div className="w-full max-w-md">
@@ -23,12 +12,11 @@ export default function SignInPage() {
             <p className="text-gray-600">Sign in to your account</p>
           </div>
           <SignIn 
-            routing="path" 
+            routing="path"
             path="/sign-in"
             afterSignInUrl="/dashboard"
             signUpUrl="/sign-up"
           />
-          <p className="mt-4 text-sm text-gray-500">Redirecting to dashboard…</p>
         </div>
       </div>
     </div>
