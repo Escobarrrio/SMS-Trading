@@ -1,8 +1,4 @@
-# WARP.md
-
-This file provides guidance to WARP (warp.dev) when working with code in this repository.
-
-## Project Overview
+Project Overview
 
 **SMS Trading** is a Next.js-based SMS platform that enables customers to send bulk SMS messages with real-time tracking and usage monitoring. It's a multi-tenant SaaS platform with customer dashboards and admin management capabilities.
 
