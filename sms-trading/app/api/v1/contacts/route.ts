@@ -9,15 +9,18 @@ export async function GET(req: NextRequest) {
   try {
     const ctx = await getClientContext(req);
     const tag = req.nextUrl.searchParams.get('tag') ?? undefined;
+    const limit = parseInt(req.nextUrl.searchParams.get('limit') || '50', 10);
+    const offset = parseInt(req.nextUrl.searchParams.get('offset') || '0', 10);
     let query = supabaseAdmin
       .from('contacts')
-      .select('*')
+      .select('*', { count: 'exact' })
       .eq('client_id', ctx.clientId)
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
     if (tag) query = query.eq('tag', tag);
-    const { data, error } = await query;
+    const { data, error, count } = await query as any;
     if (error) throw error;
-    return json(ok(data ?? []));
+    return json(ok(data ?? [], { limit, offset, total: count ?? 0 }));
   } catch (e: any) {
     return json(fail('server_error', e?.message ?? 'Unexpected error'), { status: 500 });
   }

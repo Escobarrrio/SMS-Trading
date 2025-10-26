@@ -37,9 +37,21 @@ export async function POST(req: NextRequest) {
       await supabaseAdmin.from('idempotency').insert({ key: idem, client_id: ctx.clientId }).select('id').single().catch(() => {});
     }
 
-    const results: any[] = [];
+    // Suppression filtering
+    let filtered = targets;
+    if (ctx.clientId) {
+      const { data: suppressed } = await supabaseAdmin
+        .from('suppression_list')
+        .select('phone')
+        .eq('client_id', ctx.clientId);
+      const supSet = new Set((suppressed ?? []).map((s: any) => s.phone));
+      filtered = targets.filter((t) => !supSet.has(t));
+    }
 
-    for (const phone of targets) {
+    const results: any[] = [];
+    const skipped: string[] = targets.filter((t) => !(filtered as string[]).includes(t));
+
+    for (const phone of filtered) {
       try {
         const res = await sendSMS({ to: phone, body: message });
         results.push({ to: phone, status: 'sent', providerId: res.id, providerStatus: res.status });
@@ -63,7 +75,7 @@ export async function POST(req: NextRequest) {
       await supabaseAdmin.rpc('increment_usage', { p_client_id: ctx.clientId, p_delta: results.filter(r => r.status==='sent').length }).catch(() => {});
     }
 
-    return json(ok({ count: results.length, results, campaignName: campaignName ?? null }));
+    return json(ok({ count: results.length, results, skipped, campaignName: campaignName ?? null }));
   } catch (e: any) {
     return json(fail('server_error', e?.message ?? 'Unexpected error'), { status: 500 });
   }
