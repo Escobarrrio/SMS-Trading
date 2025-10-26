@@ -5,7 +5,6 @@ import { useAuth } from '@clerk/nextjs';
 import SMSForm from '@/components/SMSForm';
 import UsageAnalytics from '@/components/UsageAnalytics';
 import AnimatedSection from '@/components/AnimatedSection';
-import { useRouter } from 'next/navigation';
 
 interface BalanceData {
   used: number;
@@ -15,20 +14,14 @@ interface BalanceData {
 }
 
 export default function Dashboard() {
-  const router = useRouter();
   const { isSignedIn, isLoaded } = useAuth();
   const [balance, setBalance] = useState<BalanceData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!isLoaded) return;
-    if (!isSignedIn) {
-      router.push('/sign-in');
-      return;
-    }
-
     fetchBalance();
-  }, [isLoaded, isSignedIn, router]);
+  }, [isLoaded]);
 
   const fetchBalance = async () => {
     try {
@@ -67,9 +60,7 @@ export default function Dashboard() {
     );
   }
 
-  if (!isSignedIn) {
-    return null;
-  }
+  const preview = !isSignedIn;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4">
@@ -82,6 +73,11 @@ export default function Dashboard() {
             <p className="text-gray-600 text-lg">
               Manage and monitor your SMS campaigns
             </p>
+            {preview && (
+              <div className="mt-4 rounded-md bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-2 text-sm">
+                Preview mode: authentication disabled. Data shown is demo.
+              </div>
+            )}
           </div>
         </AnimatedSection>
 
