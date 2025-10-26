@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 import SMSForm from '@/components/SMSForm';
 import UsageAnalytics from '@/components/UsageAnalytics';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -15,14 +16,25 @@ interface BalanceData {
 }
 
 export default function Dashboard() {
-  const { isSignedIn, isLoaded } = useAuth();
+  const router = useRouter();
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [balance, setBalance] = useState<BalanceData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isLoaded) return;
-    fetchBalance();
-  }, [isLoaded]);
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsSignedIn(!!user);
+      setIsLoaded(true);
+      if (!user) {
+        router.push('/sign-in');
+      } else {
+        fetchBalance();
+      }
+    };
+    checkAuth();
+  }, [router]);
 
   const fetchBalance = async () => {
     try {

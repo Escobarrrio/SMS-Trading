@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { json, ok, fail } from '@/lib/api';
 import { supabaseAdmin } from '@/lib/supabase';
 import { getClientContext } from '@/lib/auth';
+import { extractVariables } from '@/lib/templates';
 
 export async function GET(req: NextRequest) {
   try {
@@ -25,9 +26,10 @@ export async function POST(req: NextRequest) {
     const name = (body?.name || '').toString().trim();
     const text = (body?.text || '').toString();
     if (!name || !text) return json(fail('validation_error', 'name and text required'), { status: 422 });
+    const variables = extractVariables(text);
     const { data, error } = await supabaseAdmin
       .from('templates')
-      .insert({ client_id: ctx.clientId, name, text, variables: Array.from(new Set((text.match(/\{\s*([a-zA-Z0-9_]+)\s*\}/g) || []).map((m) => m.replace(/[{}\s]/g, '')))) })
+      .insert({ client_id: ctx.clientId, name, text, variables })
       .select('*')
       .single();
     if (error) throw error;

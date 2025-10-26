@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { getClientContext } from '@/lib/auth';
 
 export async function GET(request: NextRequest) {
   try {
-    const { userId } = await auth();
-    if (!userId) {
+    const ctx = await getClientContext(request);
+    if (!ctx.clientId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const { data: client, error } = await supabaseAdmin
       .from('clients')
       .select('used, allowance, plan')
-      .eq('clerk_id', userId)
+      .eq('id', ctx.clientId)
       .single();
 
     if (error || !client) {

@@ -94,6 +94,22 @@ export async function POST(req: NextRequest) {
     const rowsToInsert = valid.map(v => ({ client_id: ctx.clientId, name: v.name, phone: v.phone, normalized_phone: v.phone, tag: v.tag }));
     const { data, error } = await supabaseAdmin.from('contacts').insert(rowsToInsert).select('id');
     if (error) throw error;
+    
+    // Map tags into contact_tags and ensure tags table entries exist (best-effort)
+    const tagNames = Array.from(new Set(valid.map(v => v.tag).filter(Boolean) as string[]));
+    for (const t of tagNames) {
+      let tagId: any = null;
+      try {
+        const { data: tg } = await supabaseAdmin.rpc('ensure_tag', { p_client: ctx.clientId, p_name: t as any });
+        tagId = tg as any;
+      } catch {}
+      if (tagId) {
+        const { data: fresh } = await supabaseAdmin.from('contacts').select('id, tag').eq('client_id', ctx.clientId).in('id', (data ?? []).map((d: any) => d.id));
+        for (const c of fresh ?? []) {
+          if (c.tag === t) { try { await supabaseAdmin.from('contact_tags').insert({ contact_id: c.id, tag_id: tagId }); } catch {} }
+        }
+      }
+    }
 
     return json(ok({ created: data?.length ?? 0, invalid }));
   } catch (e: any) {

@@ -1,10 +1,10 @@
 import { NextRequest } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getClientContext } from './auth';
 
-export function getUserIdFromRequest(req: NextRequest): string {
+export async function getUserIdFromRequest(req: NextRequest): Promise<string> {
   try {
-    const { userId } = (auth as any)();
-    if (userId) return userId;
+    const ctx = await getClientContext(req);
+    if (ctx.supabaseUserId) return ctx.supabaseUserId;
   } catch {}
   return 'demo-user';
 }

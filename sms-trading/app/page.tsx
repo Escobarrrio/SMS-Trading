@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { UserButton } from '@clerk/nextjs';
-import { auth } from '@clerk/nextjs/server';
+import { createServerSupabaseClient } from '@/lib/supabase';
 import HeroTyped from '@/components/HeroTyped';
 import AnimatedSection from '@/components/AnimatedSection';
 import PricingCarousel from '@/components/PricingCarousel';
 
 export default async function Home() {
-  const { userId } = await auth();
+  const supabase = await createServerSupabaseClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  const userId = user?.id;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900">
@@ -20,7 +21,9 @@ export default async function Home() {
                 <Link href="/dashboard" className="text-white hover:text-blue-100">
                   Dashboard
                 </Link>
-                <UserButton />
+                <Link href="/api/auth/signout" className="text-white hover:text-blue-100">
+                  Sign Out
+                </Link>
               </>
             ) : (
               <>

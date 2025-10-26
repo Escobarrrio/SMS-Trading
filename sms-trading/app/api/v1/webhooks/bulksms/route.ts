@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         .limit(1)
         .maybeSingle();
       if (lastTx?.client_id) {
-        await supabaseAdmin.from('suppression_list').insert({ client_id: lastTx.client_id, phone, reason: 'stop' }).catch(() => {});
+        try { await supabaseAdmin.from('suppression_list').insert({ client_id: lastTx.client_id, phone, reason: 'stop' }); } catch {}
       }
     }
 

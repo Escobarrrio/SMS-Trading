@@ -1,9 +1,11 @@
-import { auth } from '@clerk/nextjs/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { createServerSupabaseClient } from '@/lib/supabase';
 
 export default async function AdminPage() {
-  const { userId } = await auth();
-  if (!userId) {
+  const supabase = await createServerSupabaseClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-600">Unauthorized</p>
@@ -14,7 +16,7 @@ export default async function AdminPage() {
   const { data } = await supabaseAdmin
     .from('clients')
     .select('is_admin')
-    .eq('clerk_id', userId)
+    .eq('supabase_user_id', user.id)
     .single();
 
   if (!data?.is_admin) {

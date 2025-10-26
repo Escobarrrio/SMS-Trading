@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { sendSMS } from '@/lib/bulksms';
 import { SendSMSSchema } from '@/lib/schemas';
+import { getClientContext } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
   try {
-    // Authenticate user
-    const { userId } = await auth();
-    if (!userId) {
+    // Get client context
+    const ctx = await getClientContext(request);
+    if (!ctx.clientId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
     // Get client data
     const { data: client, error: clientError } = await supabaseAdmin
       .from('clients')
-      .select('used, allowance, plan')
-      .eq('clerk_id', userId)
+      .select('id, used, allowance, plan')
+      .eq('id', ctx.clientId)
       .single();
 
     if (clientError || !client) {
@@ -35,9 +35,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate single recipient
+    if (!validated.to) {
+      return NextResponse.json({ error: 'Missing `to`' }, { status: 422 });
+    }
+
     // Send SMS via BulkSMS
     const smsResult = await sendSMS({
-      to: validated.to,
+      to: validated.to as string,
       body: validated.message,
     });
 
@@ -56,7 +61,7 @@ export async function POST(request: NextRequest) {
     await supabaseAdmin
       .from('clients')
       .update({ used: client.used + 1 })
-      .eq('clerk_id', userId);
+      .eq('id', ctx.clientId);
 
     if (txError) {
       console.error('Transaction logging error:', txError);

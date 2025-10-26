@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
             .eq('client_id', ctx.clientId)
             .in('id', (data ?? []).map(d => d.id));
           for (const c of fresh ?? []) {
-            if (c.tag === t) await supabaseAdmin.from('contact_tags').insert({ contact_id: c.id, tag_id: tagRow }).catch(() => {});
+            if (c.tag === t) { try { await supabaseAdmin.from('contact_tags').insert({ contact_id: c.id, tag_id: tagRow }); } catch {} }
           }
         }
         return json(ok({ created: data?.length ?? 0, contacts: data }));
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       if (error) throw error;
       if (data?.tag) {
         const { data: tg } = await supabaseAdmin.rpc('ensure_tag', { p_client: ctx.clientId, p_name: data.tag });
-        await supabaseAdmin.from('contact_tags').insert({ contact_id: data.id, tag_id: tg as any }).catch(() => {});
+        try { await supabaseAdmin.from('contact_tags').insert({ contact_id: data.id, tag_id: tg as any }); } catch {}
       }
       return json(ok(data));
     }

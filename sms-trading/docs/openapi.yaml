@@ -24,9 +24,12 @@ paths:
                   type: array
                   items: { type: string }
                 message: { type: string }
+                campaignName: { type: string }
               required: [ message ]
       responses:
         "200": { description: OK }
+        "422": { description: Validation error }
+        "429": { description: Rate limited }
   /v1/contacts:
     get:
       summary: List contacts
@@ -75,13 +78,54 @@ paths:
                 commit: { type: boolean, default: false }
       responses:
         "200": { description: OK }
-  /v1/campaigns:
+  /v1/contacts/export:
     get:
-      summary: List campaigns
+      summary: Export contacts as CSV or JSON
+      parameters:
+        - in: query
+          name: format
+          schema: { type: string, enum: [csv, json], default: csv }
+        - in: query
+          name: tag
+          schema: { type: string }
+      responses:
+        "200": { description: OK }
+  /v1/templates:
+    get:
+      summary: List templates
       responses:
         "200": { description: OK }
     post:
-      summary: Create campaign
+      summary: Create template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                text: { type: string }
+      responses:
+        "200": { description: OK }
+  /v1/campaigns:
+    get:
+      summary: List campaigns with stats
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 20 }
+        - in: query
+          name: offset
+          schema: { type: integer, default: 0 }
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create campaign and queue recipients
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          schema: { type: string }
       requestBody:
         required: true
         content:
@@ -99,8 +143,26 @@ paths:
               required: [ name, message ]
       responses:
         "200": { description: OK }
+  /v1/api-keys:
+    get:
+      summary: List API keys (hashed)
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create API key (returns plaintext once)
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Revoke API key by id (?id=)
+      responses:
+        "200": { description: OK }
   /v1/webhooks/bulksms:
     post:
-      summary: Provider webhook (DLR + inbound STOP)
+      summary: BulkSMS webhook (DLRs + inbound STOP)
+      responses:
+        "200": { description: OK }
+  /v1/webhooks/africastalking:
+    post:
+      summary: Africa's Talking webhook (DLRs + inbound STOP)
       responses:
         "200": { description: OK }
