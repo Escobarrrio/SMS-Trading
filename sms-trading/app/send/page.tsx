@@ -4,7 +4,7 @@ import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { normalizePhone } from "@/lib/phone";
 
-const templates = [
+const templatesLocal = [
   { key: "specials", label: "Special Prices", text: "🔥 Specials today: {item} now only {price}. Reply STOP to opt out." },
   { key: "stock", label: "Back In Stock", text: "✅ {item} is back in stock. Limited units available. Reply STOP to opt out." },
   { key: "collection", label: "Collection Reminder", text: "📦 Your parcel is ready for collection on {date}. Bring ID. Reply STOP to opt out." },
@@ -12,7 +12,7 @@ const templates = [
 
 export default function SendPage() {
   const [recipients, setRecipients] = useState("");
-  const [message, setMessage] = useState(templates[0].text);
+  const [message, setMessage] = useState(templatesLocal[0].text);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
 
@@ -69,7 +69,7 @@ export default function SendPage() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Template</label>
               <div className="flex gap-2 flex-wrap mb-2">
-                {templates.map((t) => (
+                {templatesLocal.map((t) => (
                   <button
                     key={t.key}
                     type="button"

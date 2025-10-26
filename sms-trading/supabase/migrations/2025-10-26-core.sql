@@ -54,6 +54,8 @@ create table if not exists campaigns (
   name text not null,
   message text not null,
   scheduled_for timestamptz,
+  dispatched_at timestamptz,
+  status text default 'draft',
   created_by text,
   created_at timestamptz default now()
 );

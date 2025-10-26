@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: SMS Trading API
+  version: "1.0.0"
+servers:
+  - url: https://your-domain/api
+paths:
+  /v1/sms:
+    post:
+      summary: Send SMS (single or bulk)
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to: { type: string }
+                recipients:
+                  type: array
+                  items: { type: string }
+                message: { type: string }
+              required: [ message ]
+      responses:
+        "200": { description: OK }
+  /v1/contacts:
+    get:
+      summary: List contacts
+      parameters:
+        - in: query
+          name: tag
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 50 }
+        - in: query
+          name: offset
+          schema: { type: integer, default: 0 }
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                phone: { type: string }
+                tag: { type: string }
+              required: [ phone ]
+      responses:
+        "200": { description: OK }
+  /v1/contacts/upload:
+    post:
+      summary: Upload CSV of contacts
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file: { type: string, format: binary }
+                hasHeader: { type: boolean, default: true }
+                nameColumn: { type: string, default: name }
+                phoneColumn: { type: string, default: phone }
+                tagColumn: { type: string, default: tag }
+                commit: { type: boolean, default: false }
+      responses:
+        "200": { description: OK }
+  /v1/campaigns:
+    get:
+      summary: List campaigns
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create campaign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                message: { type: string }
+                recipients:
+                  type: array
+                  items: { type: string }
+                tag: { type: string }
+                scheduleAt: { type: string, format: date-time }
+              required: [ name, message ]
+      responses:
+        "200": { description: OK }
+  /v1/webhooks/bulksms:
+    post:
+      summary: Provider webhook (DLR + inbound STOP)
+      responses:
+        "200": { description: OK }
