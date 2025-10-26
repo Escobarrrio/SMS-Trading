@@ -83,7 +83,7 @@ export default function UsageAnalytics({ data }: { data: UsageData }) {
           },
         },
       },
-    };
+    }};
 
   return (
     <div className="space-y-6">
