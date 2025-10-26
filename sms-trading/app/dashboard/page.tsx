@@ -85,46 +85,28 @@ export default function Dashboard() {
         <ClientNav />
         {balance && (
           <>
-            <AnimatedSection animation=
+            <AnimatedSection animation="fade-up" duration={800}>
               <div className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Usage Overview
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Usage Overview</h2>
                 <UsageAnalytics data={balance} />
               </div>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <AnimatedSection
-                animation="fade-up"
-                duration={800}
-                delay={200}
-                className="lg:col-span-2"
-              >
+              <AnimatedSection animation="fade-up" duration={800} delay={200} className="lg:col-span-2">
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Send New SMS
-                  </h2>
-                  <SMSForm
-                    remaining={balance.remaining}
-                    onSuccess={fetchBalance}
-                  />
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Send New SMS</h2>
+                  <SMSForm remaining={balance.remaining} onSuccess={fetchBalance} />
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection
-                animation="fade-up"
-                duration={800}
-                delay={300}
-              >
+              <AnimatedSection animation="fade-up" duration={800} delay={300}>
                 <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-8 text-white">
                   <h3 className="text-xl font-bold mb-6">Quick Stats</h3>
                   <div className="space-y-4">
                     <div>
                       <p className="text-blue-100 text-sm mb-1">Current Plan</p>
-                      <p className="text-3xl font-bold capitalize">
-                        {balance.plan}
-                      </p>
+                      <p className="text-3xl font-bold capitalize">{balance.plan}</p>
                     </div>
                     <div className="border-t border-blue-400 pt-4">
                       <p className="text-blue-100 text-sm mb-1">Monthly Limit</p>
@@ -132,15 +114,8 @@ export default function Dashboard() {
                     </div>
                     <div className="border-t border-blue-400 pt-4">
                       <p className="text-blue-100 text-sm mb-1">Efficiency</p>
-                      <p className="text-3xl font-bold">
-                        {((balance.remaining / balance.allowance) * 100).toFixed(
-                          0
-                        )}
-                        %
-                      </p>
-                      <p className="text-blue-100 text-xs mt-2">
-                        Remaining capacity
-                      </p>
+                      <p className="text-3xl font-bold">{((balance.remaining / balance.allowance) * 100).toFixed(0)}%</p>
+                      <p className="text-blue-100 text-xs mt-2">Remaining capacity</p>
                     </div>
                   </div>
                 </div>
