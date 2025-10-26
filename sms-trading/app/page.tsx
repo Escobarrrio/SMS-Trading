@@ -143,7 +143,7 @@ export default async function Home() {
               delay={feature.delay}
             >
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-8 hover:bg-white/20 transition-all duration-300">
-                <div className="text-4xl mb-4">{feature.icon}</div>
+<div className="mb-4"><span className="career-icon career-icon-xl career-icon-info career-icon-animate-glow"><img src="/career-icons/icons/analytics/performance-metrics.svg" alt="icon" width="48" height="48" /></span></div>
                 <h4 className="text-xl font-bold text-white mb-2">
                   {feature.title}
                 </h4>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="interview" data-category="recruitment">
+  <g class="icon-group">
+    <circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="2" class="interviewer"/>
+    <circle cx="15" cy="7" r="3" stroke="currentColor" stroke-width="2" class="candidate"/>
+    <path d="M3 19C3 16.2386 5.23858 14 8 14H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="interviewer-body"/>
+    <path d="M14 14H16C18.7614 14 21 16.2386 21 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="candidate-body"/>
+    <path d="M7 12L9 14L12 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" class="check-mark"/>
+  </g>
+  <metadata>
+    <tags>interview, meeting, conversation, hiring, discussion, face-to-face</tags>
+    <accessibility>Two people in an interview setting</accessibility>
+  </metadata>
+</svg>

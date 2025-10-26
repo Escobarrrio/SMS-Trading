@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="career-ladder" data-category="career-path">
+  <defs>
+    <linearGradient id="ladder-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g class="icon-group">
+    <path d="M7 21V3M17 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="rails"/>
+    <path d="M7 7H17M7 12H17M7 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="steps"/>
+    <circle cx="12" cy="7" r="2" fill="url(#ladder-gradient)" class="progress-indicator"/>
+    <path d="M12 9V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" class="arrow"/>
+  </g>
+  <metadata>
+    <tags>career, ladder, progression, promotion, growth, advancement, steps</tags>
+    <accessibility>Career ladder showing progression steps</accessibility>
+    <animation>climb, pulse</animation>
+  </metadata>
+</svg>

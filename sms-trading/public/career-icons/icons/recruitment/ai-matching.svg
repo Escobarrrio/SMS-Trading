@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="ai-matching" data-category="recruitment">
+  <defs>
+    <radialGradient id="ai-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00F5FF;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#7B2FF7;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FF007F;stop-opacity:1"/>
+    </radialGradient>
+    <filter id="ai-glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Neural network connections -->
+  <g class="neural-network" opacity="0.6">
+    <line x1="12" y1="12" x2="24" y2="24" stroke="url(#ai-core)" stroke-width="1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="36" y1="12" x2="24" y2="24" stroke="url(#ai-core)" stroke-width="1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="12" y1="36" x2="24" y2="24" stroke="url(#ai-core)" stroke-width="1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </line>
+    <line x1="36" y1="36" x2="24" y2="24" stroke="url(#ai-core)" stroke-width="1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- AI Core -->
+  <g class="ai-brain" filter="url(#ai-glow)">
+    <circle cx="24" cy="24" r="12" fill="none" stroke="url(#ai-core)" stroke-width="2">
+      <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Inner processing rings -->
+    <circle cx="24" cy="24" r="8" fill="none" stroke="url(#ai-core)" stroke-width="1" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="24" cy="24" r="5" fill="none" stroke="url(#ai-core)" stroke-width="1" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="360 24 24" to="0 24 24" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Central AI symbol -->
+    <text x="24" y="28" text-anchor="middle" fill="url(#ai-core)" font-size="10" font-weight="bold">AI</text>
+  </g>
+  
+  <!-- Candidate nodes -->
+  <g class="candidates">
+    <circle cx="12" cy="12" r="4" fill="url(#ai-core)" opacity="0.8"/>
+    <circle cx="36" cy="12" r="4" fill="url(#ai-core)" opacity="0.8"/>
+    <circle cx="12" cy="36" r="4" fill="url(#ai-core)" opacity="0.8"/>
+    <circle cx="36" cy="36" r="4" fill="url(#ai-core)" opacity="0.8"/>
+  </g>
+  
+  <!-- Match indicators -->
+  <g class="match-pulses">
+    <circle cx="36" cy="12" r="4" fill="none" stroke="#10B981" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Data flow particles -->
+  <circle r="1" fill="#00F5FF">
+    <animateMotion dur="2s" repeatCount="indefinite">
+      <mpath href="#flow-path"/>
+    </animateMotion>
+  </circle>
+  <path id="flow-path" d="M 12 12 Q 18 18 24 24 T 36 36" fill="none"/>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="team-collaboration" data-category="networking">
+  <defs>
+    <radialGradient id="team-gradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FBBF24;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1"/>
+    </radialGradient>
+    <linearGradient id="connect-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Central hub -->
+  <circle cx="24" cy="24" r="6" fill="url(#team-gradient)" opacity="0.3">
+    <animate attributeName="r" values="6;8;6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Team members positioned in hexagon formation -->
+  <g class="team-members">
+    <!-- Top member -->
+    <g transform="translate(24, 8)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+    
+    <!-- Top-right member -->
+    <g transform="translate(36, 14)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+    
+    <!-- Bottom-right member -->
+    <g transform="translate(36, 34)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+    
+    <!-- Bottom member -->
+    <g transform="translate(24, 40)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+    
+    <!-- Bottom-left member -->
+    <g transform="translate(12, 34)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+    
+    <!-- Top-left member -->
+    <g transform="translate(12, 14)">
+      <circle r="4" fill="url(#team-gradient)"/>
+      <circle cy="-2" r="2" fill="white"/>
+      <path d="M -2 2 C -2 1 -1 0 0 0 C 1 0 2 1 2 2" fill="white"/>
+    </g>
+  </g>
+  
+  <!-- Connection lines -->
+  <g class="connections" stroke="url(#connect-gradient)" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 24 12 L 24 20">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 32 17 L 28 21">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 32 31 L 28 27">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 24 36 L 24 28">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 16 31 L 20 27">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 16 17 L 20 21">
+      <animate attributeName="stroke-width" values="1.5;2.5;1.5" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Collaboration pulse effect -->
+  <circle cx="24" cy="24" r="20" fill="none" stroke="url(#connect-gradient)" stroke-width="0.5" opacity="0">
+    <animate attributeName="r" values="6;20;6" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

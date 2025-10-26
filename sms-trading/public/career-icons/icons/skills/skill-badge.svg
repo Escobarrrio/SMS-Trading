@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="skill-badge" data-category="skills">
+  <defs>
+    <pattern id="skill-pattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.5" fill="currentColor" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <g class="icon-group">
+    <path d="M12 2L14.09 8.26L21 9.27L16.5 13.97L17.82 21L12 17.77L6.18 21L7.5 13.97L3 9.27L9.91 8.26L12 2Z" 
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-star"/>
+    <circle cx="12" cy="12" r="3" fill="url(#skill-pattern)" class="icon-center"/>
+  </g>
+  <metadata>
+    <tags>skill, badge, achievement, competency, expertise, certification, star</tags>
+    <accessibility>Skill achievement badge</accessibility>
+    <animation>pulse, rotate, glow</animation>
+  </metadata>
+</svg>

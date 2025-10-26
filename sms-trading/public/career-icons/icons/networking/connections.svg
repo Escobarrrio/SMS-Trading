@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="connections" data-category="networking">
+  <defs>
+    <linearGradient id="network-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  <g class="icon-group">
+    <circle cx="12" cy="5" r="3" stroke="currentColor" stroke-width="2" class="node-center"/>
+    <circle cx="5" cy="19" r="3" stroke="currentColor" stroke-width="2" class="node-left"/>
+    <circle cx="19" cy="19" r="3" stroke="currentColor" stroke-width="2" class="node-right"/>
+    <path d="M10.5 7.5L6.5 16.5M13.5 7.5L17.5 16.5M8 19H16" stroke="url(#network-gradient)" stroke-width="2" stroke-linecap="round" class="connections"/>
+  </g>
+  <metadata>
+    <tags>network, connections, team, collaboration, relationships, social, links</tags>
+    <accessibility>Professional network connections</accessibility>
+    <animation>pulse, connect</animation>
+  </metadata>
+</svg>

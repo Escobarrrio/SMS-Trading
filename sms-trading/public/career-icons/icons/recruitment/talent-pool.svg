@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="talent-pool" data-category="recruitment">
+  <defs>
+    <linearGradient id="pool-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="pool-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="water-pattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#3B82F6" opacity="0.2">
+        <animate attributeName="r" values="1;1.5;1" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="6" cy="6" r="1" fill="#06B6D4" opacity="0.2">
+        <animate attributeName="r" values="1;1.5;1" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+    </pattern>
+  </defs>
+  
+  <!-- Pool container -->
+  <ellipse cx="24" cy="36" rx="20" ry="8" fill="url(#water-pattern)" opacity="0.3"/>
+  <ellipse cx="24" cy="36" rx="20" ry="8" stroke="url(#pool-gradient)" stroke-width="2" fill="none"/>
+  
+  <!-- Talent figures in pool -->
+  <g class="talent-figures" filter="url(#pool-glow)">
+    <!-- Central figure -->
+    <g transform="translate(24, 24)">
+      <circle r="5" stroke="url(#pool-gradient)" stroke-width="2" fill="none"/>
+      <circle cy="-8" r="3" stroke="url(#pool-gradient)" stroke-width="2" fill="none"/>
+      <path d="M -3 -3 L -3 3 M 3 -3 L 3 3 M -3 0 L 3 0" stroke="url(#pool-gradient)" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Left figure -->
+    <g transform="translate(14, 28)" opacity="0.8">
+      <circle r="4" stroke="url(#pool-gradient)" stroke-width="1.5" fill="none"/>
+      <circle cy="-6" r="2.5" stroke="url(#pool-gradient)" stroke-width="1.5" fill="none"/>
+    </g>
+    
+    <!-- Right figure -->
+    <g transform="translate(34, 28)" opacity="0.8">
+      <circle r="4" stroke="url(#pool-gradient)" stroke-width="1.5" fill="none"/>
+      <circle cy="-6" r="2.5" stroke="url(#pool-gradient)" stroke-width="1.5" fill="none"/>
+    </g>
+    
+    <!-- Back left figure -->
+    <g transform="translate(16, 20)" opacity="0.6">
+      <circle r="3" stroke="url(#pool-gradient)" stroke-width="1" fill="none"/>
+      <circle cy="-5" r="2" stroke="url(#pool-gradient)" stroke-width="1" fill="none"/>
+    </g>
+    
+    <!-- Back right figure -->
+    <g transform="translate(32, 20)" opacity="0.6">
+      <circle r="3" stroke="url(#pool-gradient)" stroke-width="1" fill="none"/>
+      <circle cy="-5" r="2" stroke="url(#pool-gradient)" stroke-width="1" fill="none"/>
+    </g>
+  </g>
+  
+  <!-- Ripple effects -->
+  <circle cx="24" cy="36" r="8" fill="none" stroke="url(#pool-gradient)" stroke-width="0.5" opacity="0.5">
+    <animate attributeName="r" values="8;20;8" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0;0.5" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Selection indicator -->
+  <path d="M 24 12 L 24 8 M 22 10 L 24 8 L 26 10" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+    <animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite"/>
+  </path>
+</svg>

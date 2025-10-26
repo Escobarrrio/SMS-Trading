@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="skill-assessment" data-category="skills" data-tier="premium">
+  <defs>
+    <!-- Complex gradient system with multiple stops -->
+    <radialGradient id="skill-radial" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1"/>
+      <stop offset="30%" style="stop-color:#F59E0B;stop-opacity:1"/>
+      <stop offset="60%" style="stop-color:#DC2626;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1"/>
+    </radialGradient>
+    
+    <!-- Sophisticated mesh gradient -->
+    <linearGradient id="skill-mesh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.8"/>
+      <stop offset="25%" style="stop-color:#8B5CF6;stop-opacity:0.9"/>
+      <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1"/>
+      <stop offset="75%" style="stop-color:#F97316;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#EAB308;stop-opacity:0.8"/>
+    </linearGradient>
+    
+    <!-- Advanced blur and glow effects -->
+    <filter id="skill-glow" height="300%" width="300%" x="-100%" y="-100%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feFlood flood-color="#8B5CF6" flood-opacity="0.5"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Noise texture for premium feel -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="5"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 0.1 0.05 0.1 0"/>
+      </feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+    
+    <!-- Complex clipping path -->
+    <clipPath id="hexagon-clip">
+      <path d="M24 4 L40 14 L40 34 L24 44 L8 34 L8 14 Z"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Outer hexagon container with mathematical precision -->
+  <g class="skill-container" filter="url(#skill-glow)">
+    <!-- Base hexagon with golden ratio proportions -->
+    <path d="M24 4 L40 14 L40 34 L24 44 L8 34 L8 14 Z" 
+          fill="none" 
+          stroke="url(#skill-mesh)" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round">
+      <animate attributeName="stroke-width" values="2;3;2" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Inner hexagon with offset -->
+    <path d="M24 8 L36 16 L36 32 L24 40 L12 32 L12 16 Z" 
+          fill="url(#skill-radial)" 
+          opacity="0.1"/>
+  </g>
+  
+  <!-- Skill level indicators with complex animations -->
+  <g class="skill-levels" clip-path="url(#hexagon-clip)">
+    <!-- Level 1 - Beginner -->
+    <rect x="14" y="34" width="4" height="8" fill="url(#skill-mesh)" opacity="1">
+      <animate attributeName="height" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.8;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Level 2 - Intermediate -->
+    <rect x="20" y="28" width="4" height="14" fill="url(#skill-mesh)" opacity="0.9">
+      <animate attributeName="height" values="14;16;14" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Level 3 - Advanced -->
+    <rect x="26" y="22" width="4" height="20" fill="url(#skill-mesh)" opacity="0.8">
+      <animate attributeName="height" values="20;22;20" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.6;0.8" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Level 4 - Expert -->
+    <rect x="32" y="16" width="4" height="26" fill="url(#skill-mesh)" opacity="0.7">
+      <animate attributeName="height" values="26;28;26" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.5;0.7" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Central star rating system -->
+  <g class="star-rating" transform="translate(24, 14)">
+    <!-- Complex star path with mathematical precision -->
+    <path d="M0,-8 L2.4,-2.4 L8,-0.8 L2.4,1.6 L0,8 L-2.4,1.6 L-8,-0.8 L-2.4,-2.4 Z" 
+          fill="url(#skill-mesh)" 
+          stroke="white" 
+          stroke-width="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Inner glow effect -->
+    <circle cx="0" cy="0" r="3" fill="white" opacity="0.3">
+      <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Orbital skill indicators -->
+  <g class="orbital-skills">
+    <!-- Skill orbit 1 -->
+    <circle cx="24" cy="24" r="18" fill="none" stroke="url(#skill-mesh)" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 4">
+      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="30s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Skill nodes -->
+    <g transform="translate(24, 24)">
+      <circle cx="18" cy="0" r="2" fill="url(#skill-mesh)">
+        <animateTransform attributeName="transform" type="rotate" from="0 -18 0" to="360 -18 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="18" r="2" fill="url(#skill-mesh)">
+        <animateTransform attributeName="transform" type="rotate" from="90 0 -18" to="450 0 -18" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-18" cy="0" r="2" fill="url(#skill-mesh)">
+        <animateTransform attributeName="transform" type="rotate" from="180 18 0" to="540 18 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="-18" r="2" fill="url(#skill-mesh)">
+        <animateTransform attributeName="transform" type="rotate" from="270 0 18" to="630 0 18" dur="10s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- Progress arc indicator -->
+  <g class="progress-indicator">
+    <path d="M 24 6 A 18 18 0 1 1 23.9 6" 
+          fill="none" 
+          stroke="url(#skill-mesh)" 
+          stroke-width="1" 
+          stroke-linecap="round" 
+          opacity="0.3"/>
+    
+    <path d="M 24 6 A 18 18 0 0 1 42 24" 
+          fill="none" 
+          stroke="url(#skill-mesh)" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-dasharray="28.3 113.1">
+      <animate attributeName="stroke-dasharray" values="0 113.1;84.8 28.3;0 113.1" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Achievement badges -->
+  <g class="achievement-badges">
+    <circle cx="8" cy="8" r="3" fill="#10B981" opacity="0.9">
+      <animate attributeName="opacity" values="0;0.9;0.9;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="40" cy="8" r="3" fill="#F59E0B" opacity="0.9">
+      <animate attributeName="opacity" values="0;0;0.9;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="40" cy="40" r="3" fill="#EC4899" opacity="0.9">
+      <animate attributeName="opacity" values="0;0;0;0.9" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Premium noise texture overlay -->
+  <rect width="48" height="48" fill="white" opacity="0.02" filter="url(#noise)"/>
+  
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+             xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description rdf:about="">
+        <dc:title>Skill Assessment Matrix</dc:title>
+        <dc:description>Advanced skill assessment visualization with multi-dimensional metrics</dc:description>
+        <dc:creator>CareerIcons Pro</dc:creator>
+        <dc:rights>Commercial License Required</dc:rights>
+      </rdf:Description>
+    </rdf:RDF>
+  </metadata>
+</svg>

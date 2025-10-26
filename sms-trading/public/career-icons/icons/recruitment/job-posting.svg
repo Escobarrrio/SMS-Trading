@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="job-posting" data-category="recruitment">
+  <g class="icon-group">
+    <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-board"/>
+    <path d="M8 10H16M8 14H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-lines"/>
+    <circle cx="18" cy="8" r="3" fill="#10B981" class="icon-indicator"/>
+    <path d="M17 8L17.5 8.5L19 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-check"/>
+  </g>
+  <metadata>
+    <tags>job, posting, vacancy, position, opening, recruitment, hire</tags>
+    <accessibility>Job posting board with active indicator</accessibility>
+  </metadata>
+</svg>

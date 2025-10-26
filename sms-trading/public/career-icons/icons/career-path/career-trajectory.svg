@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="career-trajectory" data-category="career-path" data-tier="premium">
+  <defs>
+    <!-- Ultra-premium gradient system -->
+    <linearGradient id="trajectory-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1">
+        <animate attributeName="stop-color" values="#0EA5E9;#3B82F6;#0EA5E9" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="33%" style="stop-color:#3B82F6;stop-opacity:1"/>
+      <stop offset="66%" style="stop-color:#8B5CF6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#D946EF;stop-opacity:1">
+        <animate attributeName="stop-color" values="#D946EF;#8B5CF6;#D946EF" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    
+    <!-- 3D perspective gradient -->
+    <radialGradient id="perspective-gradient" cx="50%" cy="100%" r="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2"/>
+    </radialGradient>
+    
+    <!-- Complex shadow system -->
+    <filter id="trajectory-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="0" dy="3" result="shadow1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="6" result="shadow2"/>
+      <feFlood flood-color="#000000" flood-opacity="0.2"/>
+      <feComposite in2="shadow1" operator="in" result="shadow1Colored"/>
+      <feFlood flood-color="#000000" flood-opacity="0.1"/>
+      <feComposite in2="shadow2" operator="in" result="shadow2Colored"/>
+      <feMerge>
+        <feMergeNode in="shadow2Colored"/>
+        <feMergeNode in="shadow1Colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Holographic effect -->
+    <filter id="holographic">
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0">
+        <animate attributeName="values" 
+                 values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0;
+                         1 0 0 0.2 0  0 1 0 0 0  0 0 1 -0.2 0  0 0 0 1 0;
+                         1 0 0 0 0  0 1 0 0.2 0  0 0 1 0 0  0 0 0 1 0;
+                         1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+                 dur="4s" repeatCount="indefinite"/>
+      </feColorMatrix>
+    </filter>
+    
+    <!-- Data visualization pattern -->
+    <pattern id="grid-pattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="none" stroke="#8B5CF6" stroke-width="0.1" opacity="0.2"/>
+      <circle cx="2" cy="2" r="0.3" fill="#8B5CF6" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- 3D perspective grid base -->
+  <g class="perspective-grid" opacity="0.5">
+    <path d="M 4 44 L 24 24 L 44 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <path d="M 8 44 L 24 24 L 40 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <path d="M 12 44 L 24 24 L 36 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <path d="M 16 44 L 24 24 L 32 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <path d="M 20 44 L 24 24 L 28 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+    
+    <!-- Horizontal grid lines -->
+    <path d="M 4 44 L 44 44" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5"/>
+    <path d="M 8 40 L 40 40" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.4"/>
+    <path d="M 12 36 L 36 36" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.3"/>
+    <path d="M 16 32 L 32 32" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.2"/>
+  </g>
+  
+  <!-- Career trajectory path with mathematical curve -->
+  <g class="trajectory-path" filter="url(#trajectory-shadow)">
+    <!-- Main career path - exponential growth curve -->
+    <path d="M 8 40 Q 16 38 20 34 T 28 26 Q 32 22 36 16 T 44 4" 
+          stroke="url(#trajectory-gradient)" 
+          stroke-width="3" 
+          fill="none" 
+          stroke-linecap="round"
+          stroke-dasharray="100">
+      <animate attributeName="stroke-dashoffset" values="100;0" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Glowing trail effect -->
+    <path d="M 8 40 Q 16 38 20 34 T 28 26 Q 32 22 36 16 T 44 4" 
+          stroke="url(#trajectory-gradient)" 
+          stroke-width="6" 
+          fill="none" 
+          stroke-linecap="round"
+          opacity="0.3"
+          filter="url(#holographic)">
+      <animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Career milestone nodes -->
+  <g class="milestone-nodes">
+    <!-- Entry level -->
+    <g transform="translate(8, 40)">
+      <circle r="3" fill="url(#trajectory-gradient)" filter="url(#trajectory-shadow)">
+        <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="6" fill="none" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5">
+        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Mid level -->
+    <g transform="translate(20, 34)">
+      <circle r="4" fill="url(#trajectory-gradient)" filter="url(#trajectory-shadow)">
+        <animate attributeName="r" values="4;5;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="8" fill="none" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5">
+        <animate attributeName="r" values="8;10;8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Senior level -->
+    <g transform="translate(28, 26)">
+      <circle r="5" fill="url(#trajectory-gradient)" filter="url(#trajectory-shadow)">
+        <animate attributeName="r" values="5;6;5" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="10" fill="none" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5">
+        <animate attributeName="r" values="10;12;10" dur="2s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Leadership level -->
+    <g transform="translate(36, 16)">
+      <circle r="6" fill="url(#trajectory-gradient)" filter="url(#trajectory-shadow)">
+        <animate attributeName="r" values="6;7;6" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="12" fill="none" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5">
+        <animate attributeName="r" values="12;14;12" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Executive level -->
+    <g transform="translate(44, 4)">
+      <circle r="7" fill="url(#trajectory-gradient)" filter="url(#trajectory-shadow)">
+        <animate attributeName="r" values="7;8;7" dur="2s" begin="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="14" fill="none" stroke="url(#trajectory-gradient)" stroke-width="0.5" opacity="0.5">
+        <animate attributeName="r" values="14;16;14" dur="2s" begin="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" begin="2s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Star achievement -->
+      <path d="M 0 -3 L 1 -1 L 3 -0.5 L 1 0.5 L 0 3 L -1 0.5 L -3 -0.5 L -1 -1 Z" 
+            fill="white" opacity="0.9">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Data visualization elements -->
+  <g class="data-viz" opacity="0.6">
+    <!-- Progress bars -->
+    <rect x="4" y="42" width="2" height="0" fill="url(#trajectory-gradient)">
+      <animate attributeName="height" values="0;-8;0" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="42;34;42" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="7" y="42" width="2" height="0" fill="url(#trajectory-gradient)">
+      <animate attributeName="height" values="0;-12;0" dur="4s" begin="0.2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="42;30;42" dur="4s" begin="0.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="10" y="42" width="2" height="0" fill="url(#trajectory-gradient)">
+      <animate attributeName="height" values="0;-16;0" dur="4s" begin="0.4s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="42;26;42" dur="4s" begin="0.4s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Floating particles for premium effect -->
+  <g class="particles">
+    <circle cx="12" cy="30" r="0.5" fill="url(#trajectory-gradient)" opacity="0.6">
+      <animate attributeName="cy" values="30;10;30" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="24" cy="35" r="0.5" fill="url(#trajectory-gradient)" opacity="0.6">
+      <animate attributeName="cy" values="35;15;35" dur="6s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="6s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="36" cy="25" r="0.5" fill="url(#trajectory-gradient)" opacity="0.6">
+      <animate attributeName="cy" values="25;5;25" dur="6s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="6s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Premium overlay texture -->
+  <rect width="48" height="48" fill="url(#grid-pattern)" opacity="0.3"/>
+  
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+             xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description rdf:about="">
+        <dc:title>Career Trajectory Visualization</dc:title>
+        <dc:description>Premium 3D career progression path with milestone tracking</dc:description>
+        <dc:creator>CareerIcons Pro</dc:creator>
+        <dc:rights>Commercial License Required</dc:rights>
+      </rdf:Description>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,285 @@
+/* CareerIcons Pro - Premium Icon Animation System */
+
+:root {
+  --ci-primary: #667eea;
+  --ci-secondary: #764ba2;
+  --ci-success: #10B981;
+  --ci-warning: #F59E0B;
+  --ci-danger: #EF4444;
+  --ci-info: #3B82F6;
+  --ci-transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Icon Styles */
+.career-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  transition: all 0.3s var(--ci-transition);
+}
+
+.career-icon-sm { width: 16px; height: 16px; }
+.career-icon-md { width: 24px; height: 24px; }
+.career-icon-lg { width: 32px; height: 32px; }
+.career-icon-xl { width: 48px; height: 48px; }
+.career-icon-2xl { width: 64px; height: 64px; }
+
+/* Icon Hover Effects */
+.career-icon-hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.career-icon-hover-grow:hover {
+  transform: scale(1.1);
+}
+
+.career-icon-hover-rotate:hover {
+  transform: rotate(15deg);
+}
+
+.career-icon-hover-pulse:hover {
+  animation: icon-pulse 1s infinite;
+}
+
+/* Icon Animations */
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes icon-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px var(--ci-primary));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px var(--ci-primary));
+  }
+}
+
+/* Animation Classes */
+.career-icon-animate-pulse {
+  animation: icon-pulse 2s infinite;
+}
+
+.career-icon-animate-bounce {
+  animation: icon-bounce 1s infinite;
+}
+
+.career-icon-animate-spin {
+  animation: icon-spin 2s linear infinite;
+}
+
+.career-icon-animate-fade {
+  animation: icon-fade-in 0.5s ease-out;
+}
+
+.career-icon-animate-slide {
+  animation: icon-slide-up 0.5s ease-out;
+}
+
+.career-icon-animate-glow {
+  animation: icon-glow 2s infinite;
+}
+
+/* Interactive States */
+.career-icon-interactive {
+  cursor: pointer;
+  transition: all 0.3s var(--ci-transition);
+}
+
+.career-icon-interactive:hover {
+  color: var(--ci-primary);
+}
+
+.career-icon-interactive:active {
+  transform: scale(0.95);
+}
+
+/* Color Variants */
+.career-icon-primary { color: var(--ci-primary); }
+.career-icon-secondary { color: var(--ci-secondary); }
+.career-icon-success { color: var(--ci-success); }
+.career-icon-warning { color: var(--ci-warning); }
+.career-icon-danger { color: var(--ci-danger); }
+.career-icon-info { color: var(--ci-info); }
+
+/* Gradient Fill Support */
+.career-icon-gradient {
+  background: linear-gradient(135deg, var(--ci-primary) 0%, var(--ci-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Badge Styles */
+.career-icon-badge {
+  position: relative;
+  display: inline-block;
+}
+
+.career-icon-badge::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--ci-danger);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Loading State */
+.career-icon-loading {
+  animation: icon-spin 1s linear infinite;
+  opacity: 0.6;
+}
+
+/* Disabled State */
+.career-icon-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Focus States for Accessibility */
+.career-icon-interactive:focus {
+  outline: 2px solid var(--ci-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .career-icon {
+    color: #e5e7eb;
+  }
+  
+  .career-icon-interactive:hover {
+    color: #a5b4fc;
+  }
+}
+
+/* Advanced Animations for Premium Icons */
+@keyframes icon-morph {
+  0%, 100% {
+    d: path("M12 2L14.09 8.26L21 9.27L16.5 13.97L17.82 21L12 17.77L6.18 21L7.5 13.97L3 9.27L9.91 8.26L12 2Z");
+  }
+  50% {
+    d: path("M12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2Z");
+  }
+}
+
+.career-icon-morph path {
+  animation: icon-morph 3s ease-in-out infinite;
+}
+
+/* Integration with AOS */
+[data-aos="icon-fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-property: opacity, transform;
+}
+
+[data-aos="icon-fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="icon-zoom-in"] {
+  opacity: 0;
+  transform: scale(0.6);
+  transition-property: opacity, transform;
+}
+
+[data-aos="icon-zoom-in"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Swiper Integration */
+.swiper-slide .career-icon {
+  transition: all 0.3s var(--ci-transition);
+}
+
+.swiper-slide-active .career-icon {
+  transform: scale(1.2);
+  color: var(--ci-primary);
+}
+
+/* Chart.js Integration - Icon as Data Point */
+.chartjs-icon-point {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .career-icon-sm { width: 14px; height: 14px; }
+  .career-icon-md { width: 20px; height: 20px; }
+  .career-icon-lg { width: 28px; height: 28px; }
+  .career-icon-xl { width: 40px; height: 40px; }
+  .career-icon-2xl { width: 56px; height: 56px; }
+}
+
+/* Print Styles */
+@media print {
+  .career-icon {
+    color: black !important;
+    animation: none !important;
+  }
+}

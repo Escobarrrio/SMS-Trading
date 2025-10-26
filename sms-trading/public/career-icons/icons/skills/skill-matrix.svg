@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" data-icon="skill-matrix" data-category="skills">
+  <defs>
+    <linearGradient id="matrix-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1"/>
+      <stop offset="33%" style="stop-color:#3B82F6;stop-opacity:1"/>
+      <stop offset="66%" style="stop-color:#8B5CF6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1"/>
+    </linearGradient>
+    <pattern id="grid-dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="1" fill="url(#matrix-grad)" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background grid -->
+  <rect x="8" y="8" width="32" height="32" fill="url(#grid-dots)" opacity="0.5"/>
+  
+  <!-- Matrix cells with varying skill levels -->
+  <g class="skill-cells">
+    <!-- Row 1 -->
+    <rect x="10" y="10" width="6" height="6" fill="url(#matrix-grad)" opacity="1">
+      <animate attributeName="opacity" values="1;0.7;1" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="18" y="10" width="6" height="6" fill="url(#matrix-grad)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3s" begin="0.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="26" y="10" width="6" height="6" fill="url(#matrix-grad)" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" begin="0.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="34" y="10" width="6" height="6" fill="url(#matrix-grad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Row 2 -->
+    <rect x="10" y="18" width="6" height="6" fill="url(#matrix-grad)" opacity="0.7"/>
+    <rect x="18" y="18" width="6" height="6" fill="url(#matrix-grad)" opacity="1">
+      <animate attributeName="height" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="18;17;18" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="26" y="18" width="6" height="6" fill="url(#matrix-grad)" opacity="0.8"/>
+    <rect x="34" y="18" width="6" height="6" fill="url(#matrix-grad)" opacity="0.5"/>
+    
+    <!-- Row 3 -->
+    <rect x="10" y="26" width="6" height="6" fill="url(#matrix-grad)" opacity="0.5"/>
+    <rect x="18" y="26" width="6" height="6" fill="url(#matrix-grad)" opacity="0.7"/>
+    <rect x="26" y="26" width="6" height="6" fill="url(#matrix-grad)" opacity="1">
+      <animate attributeName="width" values="6;8;6" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="x" values="26;25;26" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="34" y="26" width="6" height="6" fill="url(#matrix-grad)" opacity="0.6"/>
+    
+    <!-- Row 4 -->
+    <rect x="10" y="34" width="6" height="6" fill="url(#matrix-grad)" opacity="0.8"/>
+    <rect x="18" y="34" width="6" height="6" fill="url(#matrix-grad)" opacity="0.6"/>
+    <rect x="26" y="34" width="6" height="6" fill="url(#matrix-grad)" opacity="0.7"/>
+    <rect x="34" y="34" width="6" height="6" fill="url(#matrix-grad)" opacity="1">
+      <animate attributeName="fill" values="url(#matrix-grad);#10B981;url(#matrix-grad)" dur="3s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Connection lines showing relationships -->
+  <path d="M 13 13 L 21 21 M 21 21 L 29 29 M 29 29 L 37 37" 
+        stroke="url(#matrix-grad)" stroke-width="1" opacity="0.5" stroke-dasharray="2 2">
+    <animate attributeName="stroke-dashoffset" values="0;4" dur="1s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Highlight frame -->
+  <rect x="8" y="8" width="32" height="32" fill="none" stroke="url(#matrix-grad)" stroke-width="2" rx="2"/>
+</svg>

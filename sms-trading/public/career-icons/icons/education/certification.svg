@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" data-icon="certification" data-category="education">
+  <g class="icon-group">
+    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-top"/>
+    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-bottom"/>
+    <path d="M2 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tassel"/>
+    <circle cx="18" cy="18" r="3" fill="#10B981" class="achievement-badge"/>
+    <path d="M17 18L17.5 18.5L19 17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="check"/>
+  </g>
+  <metadata>
+    <tags>certification, education, graduation, diploma, degree, achievement, learning, training</tags>
+    <accessibility>Education certification with achievement badge</accessibility>
+  </metadata>
+</svg>
