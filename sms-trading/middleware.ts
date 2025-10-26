@@ -1,7 +1,11 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-// Preview mode: do not protect any routes (everything public)
-export default clerkMiddleware();
+const isProtected = createRouteMatcher(['/dashboard(.*)', '/send(.*)', '/contacts(.*)', '/campaigns(.*)']);
+const preview = process.env.PREVIEW_MODE === 'true';
+
+export default clerkMiddleware((auth, req) => {
+  if (!preview && isProtected(req)) auth().protect();
+});
 
 export const config = {
   matcher: [
