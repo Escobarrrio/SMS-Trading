@@ -5,6 +5,7 @@ import { useAuth } from '@clerk/nextjs';
 import SMSForm from '@/components/SMSForm';
 import UsageAnalytics from '@/components/UsageAnalytics';
 import AnimatedSection from '@/components/AnimatedSection';
+import ClientNav from '@/components/ClientNav';
 
 interface BalanceData {
   used: number;
@@ -81,9 +82,10 @@ export default function Dashboard() {
           </div>
         </AnimatedSection>
 
+        <ClientNav />
         {balance && (
           <>
-            <AnimatedSection animation="fade-up" duration={800} delay={100}>
+            <AnimatedSection animation=
               <div className="mb-12">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
                   Usage Overview
